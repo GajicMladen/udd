@@ -1,51 +1,35 @@
 version: '3'
+
 services:
   elasticsearch:
-    image: elasticsearch:7.9.1
+    image: elasticsearch:7.4.0
     container_name: elasticsearch
-    ports:
-      - "9200:9200"
-      - "9300:9300"
-    volumes:
-      - test_data:/usr/share/elasticsearch/data/
-      - ./elk-config/elasticsearch/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
     environment:
       - discovery.type=single-node
-      - http.host=0.0.0.0
-      - transport.host=0.0.0.0
+      - ES_JAVA_OPTS=-Xms1g -Xmx1g
       - xpack.security.enabled=false
-      - xpack.monitoring.enabled=false
-      - cluster.name=elasticsearch
-      - bootstrap.memory_lock=true
-    networks:
-      - elk
-
-  logstash:
-    image: logstash:7.9.1
-    container_name: logstash
     ports:
-      - "5044:5044"
-      - "9600:9600"
-    volumes:
-      - ./elk-config/logstash/logstash.conf:/usr/share/logstash/pipeline/logstash.conf
-      - ./elk-config/logstash/logstash.yml:/usr/share/logstash/config/logstash.yml
-      - ls_data:/usr/share/logstash/data
+      - 9200:9200
 
-    networks:
-      - elk
+  kibana:
+    image: kibana:7.4.0
+    container_name: kibana
+    ports:
+      - 5601:5601
+    environment:
+      - ELASTICSEARCH_HOST=http://elasticsearch:9200
     depends_on:
       - elasticsearch
 
-  kibana:
-    image: kibana:7.9.1
-    container_name: kibana
+  logstash:
+    image: logstash:7.4.0
+    container_name: logstash
     ports:
-      - "5601:5601"
+      - 5044:5044
+    command: ["-f", "/etc/logstash/conf.d", "-r"]
     volumes:
-      - ./elk-config/kibana/kibana.yml:/usr/share/kibana/config/kibana.yml
-      - kb_data:/usr/share/kibana/data
-    networks:
-      - elk
+      - ./config/logstash:/etc/logstash/conf.d
+      - ./config/logs:/output-logs
     depends_on:
       - elasticsearch
       
@@ -55,18 +39,12 @@ services:
     ports:
       - '9000:9000'
       - '9001:9001'
-    networks:
-      - elk
     volumes:
       - 'minio_data:/data'
     environment:
       - MINIO_ROOT_USER=minio
       - MINIO_ROOT_PASSWORD=minio
       - MINIO_DEFAULT_BUCKETS=elk
-
-networks:
-  elk:
-    driver: bridge
 
 volumes:
   test_data:
