@@ -1,13 +1,13 @@
 package com.example.UddAPI.repository;
 
-import com.example.UddAPI.index.IndexUgovora;
+import com.example.UddAPI.index.ContractIndex;
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-public interface UgovorRepository extends ElasticsearchRepository<IndexUgovora,String> {
+public interface ContractRepository extends ElasticsearchRepository<ContractIndex,String> {
 
-    List<IndexUgovora> findByIme( String ime);
+    List<ContractIndex> findByNaslov(String naslov);
 }

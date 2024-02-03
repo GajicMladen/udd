@@ -1,0 +1,10 @@
+<div class="uplad-contract-div">
+  <button mat-raised-button color="accent" (click)="fileInput.click()">Choose contract</button>
+  <input type="file" (change)="selectFile($event)" #fileInput hidden id="file"/>
+  {{srcResult}}
+  
+  <button mat-raised-button color="primary" [disabled]="!selectedFiles" (click)="upload()">
+    Upload
+  </button>
+</div>
+  
