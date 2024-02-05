@@ -46,22 +46,21 @@ export class ContractService {
   }
 
   advancedSearch(form:FormGroup):Observable<Contract[]>{
-    
-    // let formData = new FormData();
-
-    // formData.append("NameAndLastnameSingAgencySearch",form.get("B_nameAndLastnameSignAgency")?.value);
-    // formData.append("ContentSearch",form.get("B_contractContent")?.value);
-    // formData.append("NameAndLevelGovSearch",form.get("B_govNameAndLevel")?.value);
-
-    // formData.append("nameAndLastnameSingAgencySearch",form.get("nameAndLastnameSignAgency")?.value);
-    // formData.append("contentSearch",form.get("contractContent")?.value);
-    // formData.append("nameAndLevelGovSearch",form.get("govNameAndLevel")?.value);
-
-    // formData.append("nameAndLastnameSingAgencySearchOperator",form.get("nameAndLastnameSignAgencyOperator")?.value);
-    // formData.append("contentSearchOperator",form.get("contractContentOperator")?.value);
-    // formData.append("nameAndLevelGovSearchOperator",form.get("govNameAndLevelOperator")?.value);
     const headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
     return this.httpClient.post<Contract[]>(this.url+"/advancedSearch",JSON.stringify(form.getRawValue()),
                                               {headers:headers});
+  }
+
+  geoLocationSearch(address:string,distance:string):Observable<Contract[]>{
+    let formData = new FormData();
+    formData.append("address",address);
+    formData.append("distance",distance);
+    return this.httpClient.post<Contract[]>(this.url+"/geoLocationSearch",formData);
+  }
+
+  downloadFile(filename:string):Observable<any>{
+    let formData = new FormData();
+    formData.append("filename",filename)
+    return this.httpClient.post(this.url+"/download",formData,{responseType:'blob'});
   }
 }

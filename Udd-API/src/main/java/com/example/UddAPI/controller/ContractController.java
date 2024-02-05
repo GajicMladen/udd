@@ -6,6 +6,7 @@ import com.example.UddAPI.service.MinioAdapter;
 import com.example.UddAPI.service.ParsePDFService;
 import com.example.UddAPI.service.ContractSearchService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ByteArrayResource;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -46,6 +47,16 @@ public class ContractController {
         return ResponseEntity.ok().body("");
     }
 
+    @PostMapping("/download")
+    public ResponseEntity<?> downloadFile(@RequestParam("filename") String filename){
+        byte[] bytes = minioAdapter.getFile(filename);
+        ByteArrayResource resource =  new ByteArrayResource(bytes);
+
+        return ResponseEntity.ok()
+                .contentLength(bytes.length)
+                .contentType(MediaType.APPLICATION_OCTET_STREAM)
+                .body(resource);
+    }
     @PostMapping("/findByTitle")
     public ResponseEntity<List<ContractIndex>> findContractsByTitle(@RequestParam("title") String naslov){
         List<ContractIndex> contracts = ugovorSearchService.findContractsByTitle(naslov);
@@ -72,6 +83,12 @@ public class ContractController {
     @PostMapping(value = "/advancedSearch",consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<ContractIndex>> findContractsByAdvancedSearch(@RequestBody AdvancedSearchDTO advancedSearchDTO){
         List<ContractIndex> contracts = ugovorSearchService.findContractsByAdvancedSearch(advancedSearchDTO);
+        return ResponseEntity.ok().body(contracts);
+    }
+
+    @PostMapping(value = "/geoLocationSearch")
+    public ResponseEntity<List<ContractIndex>> findContractsByGeoLocation(@RequestParam("address") String address,@RequestParam("distance") String distance){
+        List<ContractIndex> contracts = ugovorSearchService.searchWithGeoLocation(address,distance);
         return ResponseEntity.ok().body(contracts);
     }
 }

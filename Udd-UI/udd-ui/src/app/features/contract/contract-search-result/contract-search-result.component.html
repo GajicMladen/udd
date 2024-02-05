@@ -1,25 +1,26 @@
-<div class="search-result">
-    <h2 class="title">{{contract.title}}</h2>
-    <div>
+<div class="search-result-total">
+    <div class="search-result">
+        <h2 class="title">{{contract.title}}</h2>
         <div>
-            <span>Gov:</span><span>{{contract.govName}}</span>
+            <div>
+                <span>Gov:</span><span>{{contract.govName}}</span>
+            </div>
+            <div>
+                <span>Lvl:</span><span>{{contract.govLevel}}</span>
+            </div>
         </div>
         <div>
-            <span>Lvl:</span><span>{{contract.govLevel}}</span>
+            <div>
+                <span>A sign:</span><span>{{contract.nameSignAgency}} {{contract.lastnameSignAgency}}</span>
+            </div>
+            <div>
+                <span>G sign:</span><span>{{contract.nameSignGov}} {{contract.lastnameSignGov}}</span>
+            </div>
+        </div>
+        <div>
+            <button mat-raised-button color="accent" (click)="downloadFile()"><mat-icon style="margin:0;">download</mat-icon></button>
         </div>
     </div>
-    <div>
-        <div>
-            <span>A sign:</span><span>{{contract.nameSignAgency}} {{contract.lastnameSignAgency}}</span>
-        </div>
-        <div>
-            <span>G sign:</span><span>{{contract.nameSignGov}} {{contract.lastnameSignGov}}</span>
-        </div>
-    </div>
-    <div>
-        <span>Content:</span><span>...{{contract.content.substring(10,20)}}... </span>
-    </div>
-    <div>
-        <button mat-raised-button color="accent"><mat-icon>download</mat-icon></button>
+    <div class="highlight" [innerHTML]="'...'+contract.highlight+'...'">
     </div>
 </div>

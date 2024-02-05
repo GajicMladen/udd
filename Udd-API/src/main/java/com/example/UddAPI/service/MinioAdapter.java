@@ -54,10 +54,9 @@ public class MinioAdapter {
 
     public byte[] getFile(String key) {
         try {
-
             InputStream obj = minioClient.getObject(GetObjectArgs.builder()
                     .bucket(defaultBucketName)
-                    .object(defaultBucketName+"/"+key).build());
+                    .object(key).build());
 
             byte[] content = IOUtils.toByteArray(obj);
             obj.close();

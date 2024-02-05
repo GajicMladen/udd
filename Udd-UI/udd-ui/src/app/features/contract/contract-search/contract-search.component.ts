@@ -10,12 +10,14 @@ import { ContractService } from '../../../shared/services/contract-service/contr
 import { Contract } from '../../../model/contract';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { ContractSearchResultComponent } from '../contract-search-result/contract-search-result.component';
+import { error } from 'console';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-contract-search',
   standalone: true,
   imports: [MatSlideToggleModule,MatButtonModule,MatIconModule,
-    MatInputModule,MatFormFieldModule,OperatorPickComponent,ReactiveFormsModule,ContractSearchResultComponent],
+    MatInputModule,MatFormFieldModule,OperatorPickComponent,ReactiveFormsModule,ContractSearchResultComponent,MatIconModule],
   templateUrl: './contract-search.component.html',
   styleUrl: './contract-search.component.css'
 })
@@ -30,12 +32,16 @@ export class ContractSearchComponent {
     govNameAndLevelOperator : new FormControl("OR"),
     B_nameAndLastnameSignAgency: new FormControl(false),
     B_contractContent : new FormControl(false),
-    B_govNameAndLevel : new FormControl(false)
+    B_govNameAndLevel : new FormControl(false),
+    address: new FormControl(""),
+    distance: new FormControl("")
   })
 
-  contractService: ContractService = inject(ContractService);
-
+  geoLocationSearch:boolean = false;
+  
   resultOfSearch: Contract[] = [];
+  
+  contractService = inject(ContractService);
 
   isMoreThanOneSelected():boolean{
     let i: number = 0;
@@ -46,17 +52,30 @@ export class ContractSearchComponent {
     return i > 1;
   }
 
-  searchContracts(){
-    if(!this.isMoreThanOneSelected()){
-      if(this.form.get("B_contractContent")?.value)
-        this.contractService.searchContractByContent(this.form.get("contractContent")?.value).subscribe(data => this.resultOfSearch = data);
-      else if(this.form.get("B_govNameAndLevel")?.value)
-        this.contractService.searchContractByNameAndLevelGov(this.form.get("govNameAndLevel")?.value).subscribe(data=> this.resultOfSearch=data);
-      else if( this.form.get("B_nameAndLastnameSignAgency")?.value)
-        this.contractService.searchContractByNameAndLastnameSignAgency(this.form.get("nameAndLastnameSignAgency")?.value).subscribe(data=> this.resultOfSearch=data);
+  enablelGeoLocationSearch(){
+    this.geoLocationSearch = !this.geoLocationSearch;
+    if(this.geoLocationSearch){
+      this.form.get("B_contractContent")?.setValue(false);
+      this.form.get("B_govNameAndLevel")?.setValue(false);
+      this.form.get("B_nameAndLastnameSignAgency")?.setValue(false);
     }
-    else{
-      this.contractService.advancedSearch(this.form).subscribe(data=> this.resultOfSearch=data);
+  }
+
+  searchContracts(){
+    if(!this.geoLocationSearch){
+      if(!this.isMoreThanOneSelected()){
+        if(this.form.get("B_contractContent")?.value)
+          this.contractService.searchContractByContent(this.form.get("contractContent")?.value).subscribe(data => this.resultOfSearch = data);
+        else if(this.form.get("B_govNameAndLevel")?.value)
+          this.contractService.searchContractByNameAndLevelGov(this.form.get("govNameAndLevel")?.value).subscribe(data=> this.resultOfSearch=data);
+        else if( this.form.get("B_nameAndLastnameSignAgency")?.value)
+          this.contractService.searchContractByNameAndLastnameSignAgency(this.form.get("nameAndLastnameSignAgency")?.value).subscribe(data=> this.resultOfSearch=data);
+      }
+      else{
+        this.contractService.advancedSearch(this.form).subscribe(data=> this.resultOfSearch=data);
+      }
+    }else{
+      this.contractService.geoLocationSearch(this.form.get("address")?.value,this.form.get("distance")?.value).subscribe(data => this.resultOfSearch=data);
     }
   }
 }

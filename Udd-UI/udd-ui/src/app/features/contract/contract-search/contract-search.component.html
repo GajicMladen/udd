@@ -3,47 +3,63 @@
 <form [formGroup]="form" >
 <div class="contract-search">
     <div class="slide-toggles">
-        <mat-slide-toggle formControlName="B_nameAndLastnameSignAgency" color="primary">agency</mat-slide-toggle>
-        <mat-slide-toggle formControlName="B_govNameAndLevel" color="primary">goverment</mat-slide-toggle>
-        <mat-slide-toggle formControlName="B_contractContent" color="primary">content</mat-slide-toggle>
+        <mat-slide-toggle formControlName="B_nameAndLastnameSignAgency" color="primary" (change)="geoLocationSearch = false"><mat-icon>mode_edit</mat-icon></mat-slide-toggle>
+        <mat-slide-toggle formControlName="B_govNameAndLevel" color="primary" (change)="geoLocationSearch = false"><mat-icon>account_balance</mat-icon></mat-slide-toggle>
+        <mat-slide-toggle formControlName="B_contractContent" color="primary" (change)="geoLocationSearch = false"><mat-icon>format_align_center</mat-icon></mat-slide-toggle>
+        <mat-slide-toggle (change)="enablelGeoLocationSearch()" color="primary" [checked]="geoLocationSearch"><mat-icon>place</mat-icon></mat-slide-toggle>
     </div>
-    <div class="search-boxes">
+    @if (!geoLocationSearch) {
+        <div class="search-boxes">
+                
+            @if (form.get("B_nameAndLastnameSignAgency")?.value) {
+                <div class="search-box-complete">
+                    @if (isMoreThanOneSelected()) {
+                        <app-operator-pick [formGroupInput]="form" [formControlNameInput]="'nameAndLastnameSignAgencyOperator'"></app-operator-pick>
+                    }
+                    <mat-form-field >
+                        <mat-label>Name and Lastname agency sign</mat-label>
+                        <input matInput formControlName="nameAndLastnameSignAgency" (keydown.enter)="searchContracts()">
+                    </mat-form-field>
+                </div>
+            }
             
-        @if (form.get("B_nameAndLastnameSignAgency")?.value) {
-            <div class="search-box-complete">
-                @if (isMoreThanOneSelected()) {
-                    <app-operator-pick [formGroupInput]="form" [formControlNameInput]="'nameAndLastnameSignAgencyOperator'"></app-operator-pick>
-                }
-                <mat-form-field >
-                    <mat-label>Name and Lastname agency sign</mat-label>
-                    <input matInput formControlName="nameAndLastnameSignAgency" (keydown.enter)="searchContracts()">
-                </mat-form-field>
-            </div>
-        }
-        
-        @if (form.get("B_govNameAndLevel")?.value) {
-            <div class="search-box-complete">
-                @if (isMoreThanOneSelected()) {
-                    <app-operator-pick [formGroupInput]="form" [formControlNameInput]="'govNameAndLevelOperator'"></app-operator-pick>
-                }
-                <mat-form-field >
-                    <mat-label>Name and Level of goverment</mat-label>
-                    <input matInput formControlName="govNameAndLevel" (keydown.enter)="searchContracts()">
-                </mat-form-field>
-            </div>
-        }
-        @if (form.get("B_contractContent")?.value) {
-            <div class="search-box-complete">
-                @if (isMoreThanOneSelected()) {
-                    <app-operator-pick [formGroupInput]="form" [formControlNameInput]="'contractContentOperator'"></app-operator-pick>
-                }
-                <mat-form-field >
-                    <mat-label>content of Contract</mat-label>
-                    <input matInput formControlName="contractContent" (keydown.enter)="searchContracts()">
-                </mat-form-field>
-            </div>
-        }
-    </div>
+            @if (form.get("B_govNameAndLevel")?.value) {
+                <div class="search-box-complete">
+                    @if (isMoreThanOneSelected()) {
+                        <app-operator-pick [formGroupInput]="form" [formControlNameInput]="'govNameAndLevelOperator'"></app-operator-pick>
+                    }
+                    <mat-form-field >
+                        <mat-label>Name and Level of goverment</mat-label>
+                        <input matInput formControlName="govNameAndLevel" (keydown.enter)="searchContracts()">
+                    </mat-form-field>
+                </div>
+            }
+            @if (form.get("B_contractContent")?.value) {
+                <div class="search-box-complete">
+                    @if (isMoreThanOneSelected()) {
+                        <app-operator-pick [formGroupInput]="form" [formControlNameInput]="'contractContentOperator'"></app-operator-pick>
+                    }
+                    <mat-form-field >
+                        <mat-label>content of Contract</mat-label>
+                        <input matInput formControlName="contractContent" (keydown.enter)="searchContracts()">
+                    </mat-form-field>
+                </div>
+            }
+        </div>
+    }@else {
+        <div class="search-box-complete">
+            <mat-form-field >
+                <mat-label>Address of Goverment</mat-label>
+                <input matInput formControlName="address" (keydown.enter)="searchContracts()">
+            </mat-form-field>
+            <mat-form-field >
+                <mat-label>distance</mat-label>
+                <input matInput formControlName="distance" [type]="'number'" (keydown.enter)="searchContracts()">
+            </mat-form-field>
+        </div>
+
+    }
+    
     <div class="srch-button">
         <div>
             <button mat-raised-button color="primary" (click)="searchContracts()">Search<mat-icon>search</mat-icon></button>
@@ -53,16 +69,15 @@
 </form>
 
 <hr />
-<h2>Search result:</h2>
+<h2 style="color: gray;">Search result:</h2>
 <div class="search-results">
     @if(resultOfSearch.length > 0){
-
         @for (item of resultOfSearch; track $index) {
             <app-contract-search-result [contract]="item"></app-contract-search-result>
         }
     }@else {
         <h4>
-            No search results...      
+            No search results...  <mat-icon>find_replace</mat-icon>    
         </h4>
     }
     
