@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { FileUploadService } from '../../services/file-upload-service/file-upload.service';
 import { HttpEventType, HttpResponse } from '@angular/common/http';
@@ -23,9 +23,8 @@ export class UploadFileComponent {
   srcResult: string = "";
   fileInfos!: Observable<any>;
 
-  constructor(
-    private uploadService: FileUploadService,
-    private toastr: ToastrService) { }
+  uploadService = inject(FileUploadService);
+  toasrt = inject(ToastrService);
 
   selectFile(event:any) {  
 
@@ -41,8 +40,7 @@ export class UploadFileComponent {
       
       this.uploadService.upload(this.addressToUpload,this.currentFile).subscribe(
         data =>{
-          console.log(data);
-          this.message = data;
+          this.toasrt.success("File successfully updated");
         }
       )
       }

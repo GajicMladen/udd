@@ -11,7 +11,7 @@ import org.springframework.data.elasticsearch.core.geo.GeoPoint;
 @NoArgsConstructor
 @AllArgsConstructor
 @Document(indexName = "index_ugovora")
-//@Setting(settingPath = "/srpski-analizator-config.json")
+@Setting(settingPath = "/srpski-analizator-config.json")
 public class ContractIndex {
     @Id
     private String id;
@@ -41,7 +41,7 @@ public class ContractIndex {
     private String emailAgency;
     @Field(type = FieldType.Text, store = true, name = "title")
     private String title;
-    @Field(type = FieldType.Text, store = true, name = "sadrzaj_sr")
+    @Field(type = FieldType.Text, store = true, name = "sadrzaj_sr",analyzer = "serbian_simple", searchAnalyzer = "serbian_simple")
     private String content;
 
     @GeoPointField
@@ -54,7 +54,9 @@ public class ContractIndex {
     @Field(type = FieldType.Integer, store = true, name = "id_baze_podataka", index = false)
     private Integer idBP;
 
-    public ContractIndex(String nameSignGov, String lastnameSignGov, String nameSignAgency, String lastnameSignAgency, String govName, String govLevel, String addressGov, String addressAgency, String emailGov, String emailAgency, String title, String content, String serverFilename, Integer idBP) {
+    private String highlight;
+
+    public ContractIndex(String nameSignGov, String lastnameSignGov, String nameSignAgency, String lastnameSignAgency, String govName, String govLevel, String addressGov, String addressAgency, String emailGov, String emailAgency, String title, String content, String serverFilename, Integer idBP,GeoPoint geoPoint) {
         this.nameSignGov = nameSignGov;
         this.lastnameSignGov = lastnameSignGov;
         this.nameSignAgency = nameSignAgency;
@@ -69,5 +71,11 @@ public class ContractIndex {
         this.content = content;
         this.serverFilename = serverFilename;
         this.idBP = idBP;
+        this.location = geoPoint;
+
+    }
+
+    public void setHighlight(String highlight) {
+        this.highlight = highlight;
     }
 }

@@ -15,4 +15,5 @@ export interface Contract{
     location:string | undefined,
     serverFilename:string,
     idBP:number,
+    highlight:string
 }
