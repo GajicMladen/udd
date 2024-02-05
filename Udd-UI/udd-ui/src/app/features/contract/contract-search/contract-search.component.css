@@ -1,0 +1,30 @@
+.contract-search{
+    display: flex;
+    gap: 25px;
+}
+
+.slide-toggles{
+    display: flex;
+    flex-direction: column;
+}
+.search-boxes {
+    display: flex;
+    gap: 10px;
+}
+.search-box-complete{
+    display: flex;
+    flex-direction: row;
+    gap:5px;
+}
+
+.srch-button{
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    align-self: center;
+}
+.search-results{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}

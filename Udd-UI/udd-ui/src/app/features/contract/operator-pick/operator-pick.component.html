@@ -1,0 +1,12 @@
+<form [formGroup]="formGroupInput">
+    <div >
+        <mat-form-field class="picker">
+            <mat-label>Operator</mat-label>
+            <mat-select [formControlName]="formControlNameInput">
+                <mat-option [value]="'AND'">AND</mat-option>
+                <mat-option [value]="'OR'">OR</mat-option>
+                <mat-option [value]="'NOT'">NOT</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+</form>

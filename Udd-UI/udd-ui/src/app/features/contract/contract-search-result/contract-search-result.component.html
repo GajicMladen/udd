@@ -1,0 +1,25 @@
+<div class="search-result">
+    <h2 class="title">{{contract.title}}</h2>
+    <div>
+        <div>
+            <span>Gov:</span><span>{{contract.govName}}</span>
+        </div>
+        <div>
+            <span>Lvl:</span><span>{{contract.govLevel}}</span>
+        </div>
+    </div>
+    <div>
+        <div>
+            <span>A sign:</span><span>{{contract.nameSignAgency}} {{contract.lastnameSignAgency}}</span>
+        </div>
+        <div>
+            <span>G sign:</span><span>{{contract.nameSignGov}} {{contract.lastnameSignGov}}</span>
+        </div>
+    </div>
+    <div>
+        <span>Content:</span><span>...{{contract.content.substring(10,20)}}... </span>
+    </div>
+    <div>
+        <button mat-raised-button color="accent"><mat-icon>download</mat-icon></button>
+    </div>
+</div>

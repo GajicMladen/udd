@@ -1,15 +1,16 @@
 import { Component } from '@angular/core';
-import { ContractService } from '../../shared/services/contract-service/contract.service';
+import { ContractService } from '../../../shared/services/contract-service/contract.service';
 import { ToastrService } from 'ngx-toastr';
 import { MatButtonModule } from '@angular/material/button';
-import { UploadFileComponent } from '../../shared/components/upload-file/upload-file.component';
-import { environments } from '../../../environments/environments';
-import { API_ENDPOINTS } from '../../../environments/API-paths';
+import { UploadFileComponent } from '../../../shared/components/upload-file/upload-file.component';
+import { API_ENDPOINTS } from '../../../../environments/API-paths';
+import { environments } from '../../../../environments/environments';
+import { ContractSearchComponent } from '../contract-search/contract-search.component';
 
 @Component({
   selector: 'app-contract',
   standalone: true,
-  imports: [MatButtonModule,UploadFileComponent],
+  imports: [MatButtonModule,UploadFileComponent,ContractSearchComponent],
   templateUrl: './contract.component.html',
   styleUrl: './contract.component.css'
 })
