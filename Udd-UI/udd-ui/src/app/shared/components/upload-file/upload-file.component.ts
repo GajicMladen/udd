@@ -15,6 +15,7 @@ import {MatButtonModule} from '@angular/material/button';
 export class UploadFileComponent {
 
   @Input() addressToUpload : string = "";
+  @Input() laws :boolean = false;
 
   selectedFiles: FileList | undefined;
   currentFile: File | undefined;

@@ -1,0 +1,56 @@
+.contract-page{
+    display: flex;
+    
+}
+.search-result-total{
+    box-shadow: rgba(194, 24 ,91, 0.8) 1.95px 1.95px 2.6px;
+    border-radius: 10px;
+}
+.search-result{
+    
+    padding: 10px;
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+}
+.title{
+    min-width: 25%;
+}
+.highlight{
+    padding: 20px;
+    color: gray;
+    
+}
+.contract-search{
+    display: flex;
+    gap: 25px;
+    align-items: center;
+}
+
+.slide-toggles{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.search-boxes {
+    display: flex;
+    gap: 10px;
+}
+.search-box-complete{
+    display: flex;
+    flex-direction: row;
+    gap:5px;
+    max-height: 78px;
+}
+
+.srch-button{
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    align-self: center;
+}
+.search-results{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}

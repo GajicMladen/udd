@@ -1,0 +1,11 @@
+<div class="search-result-total">
+    <div class="search-result">
+        <h2 class="title">{{law.serverFilename}}</h2>
+        
+        <div>
+            <button mat-raised-button color="accent" (click)="downloadFile()"><mat-icon style="margin:0;">download</mat-icon></button>
+        </div>
+    </div>
+    <div class="highlight" [innerHTML]="'...'+law.highlight+'...'">
+    </div>
+</div>

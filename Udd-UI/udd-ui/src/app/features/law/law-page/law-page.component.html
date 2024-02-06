@@ -1,0 +1,44 @@
+<div class="contract-page">
+    <div style="width: 250px;">
+        <h2>Upload law</h2>
+        <app-upload-file [addressToUpload]="addressToUpladFiles" [laws]="true"></app-upload-file>
+    </div>
+    <div style="
+    width: 100%;
+    padding-left: 10px;">
+        <form [formGroup]="form" >
+            <div class="contract-search">
+                <div class="search-boxes">
+                    <div class="search-box-complete">
+                        
+                        <mat-form-field >
+                            <mat-label>Law content</mat-label>
+                            <input matInput formControlName="content" (keydown.enter)="searchContracts()">
+                        </mat-form-field>
+                    </div>
+                </div>
+                
+                <div class="srch-button">
+                    <div>
+                        <button mat-raised-button color="primary" (click)="searchContracts()">Search<mat-icon>search</mat-icon></button>
+                    </div>
+                </div>
+            </div>
+            </form>
+            
+            <hr />
+            <h2 style="color: gray;">Search result:</h2>
+            <div class="search-results">
+                @if(resultOfSearch.length > 0){
+                    @for (item of resultOfSearch; track $index) {
+                        <app-law-search-result [law]="item"></app-law-search-result>
+                    }
+                }@else {
+                    <h4>
+                        No search results...  <mat-icon>find_replace</mat-icon>    
+                    </h4>
+                }
+                
+            </div>
+    </div>
+</div>

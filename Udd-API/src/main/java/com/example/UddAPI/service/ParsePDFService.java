@@ -3,6 +3,7 @@ package com.example.UddAPI.service;
 import co.elastic.clients.elasticsearch._types.GeoLocation;
 import com.example.UddAPI.dto.LocationDTO;
 import com.example.UddAPI.index.ContractIndex;
+import com.example.UddAPI.index.LawIndex;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.text.PDFTextStripper;
@@ -61,6 +62,11 @@ public class ParsePDFService {
                 nameSignAgency,lastnameSignAgency,govName,govLevel,addressGov,
                 addressAgency,emailGov,emailAgency,title,content,nazivFajla,1,geoPoint);
     }
+
+    public LawIndex parseIndex(String textZakona, String nazivFajla){
+        return new LawIndex(textZakona,nazivFajla,2);
+    }
+
 
     public String extractFiled(String fieldName,String text){
         return text.split(fieldName+":")[1].split(";")[0];

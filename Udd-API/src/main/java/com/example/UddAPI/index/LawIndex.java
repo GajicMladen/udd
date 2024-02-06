@@ -22,4 +22,16 @@ public class LawIndex {
     private String serverFilename;
     @Field(type = FieldType.Integer, store = true, name = "id_baze_podataka", index = false)
     private Integer idDB;
+
+    private String highlight;
+    public LawIndex(String content, String serverFilename, Integer idDB) {
+        this.content = content;
+        this.serverFilename = serverFilename;
+        this.idDB = idDB;
+    }
+
+
+    public void setHighlight(String highlight) {
+        this.highlight = highlight;
+    }
 }

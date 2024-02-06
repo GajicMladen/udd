@@ -1,4 +1,4 @@
 export enum API_ENDPOINTS{
     CONTRACT="contracts",
-    LAW = "zakoni"
+    LAW = "laws"
 }

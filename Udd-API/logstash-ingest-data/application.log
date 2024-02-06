@@ -49,3 +49,51 @@
 2024-02-06T00:53:10.250+01:00  INFO 19628 --- [http-nio-8080-exec-1] c.e.U.controller.ContractController      : STATISTIC-LOG |  Mladen  Gajic ->  Malozvornicka skupstina ->  Ribarska,12,Mali Zvornik ;
 2024-02-06T00:53:23.611+01:00  INFO 19628 --- [http-nio-8080-exec-4] c.e.U.controller.ContractController      : STATISTIC-LOG |  Ognjen  Ogic ->  Suboticka skupstina ->  Cara Lazara,12,Subotica ;
 2024-02-06T00:53:27.384+01:00  INFO 19628 --- [http-nio-8080-exec-3] c.e.U.controller.ContractController      : STATISTIC-LOG |  Sreten  Stokic ->  Zrenjaninska skupstina stanara ->  Jovana Cvijica,21,Šabac ;
+2024-02-06T09:29:57.404+01:00  INFO 8904 --- [main] com.example.UddAPI.UddApiApplication     : Starting UddApiApplication using Java 19.0.1 with PID 8904 (C:\Users\PC\Desktop\fax\master\upp_sep_udd\udd\Udd-API\target\classes started by PC in C:\Users\PC\Desktop\fax\master\upp_sep_udd\udd\Udd-API)
+2024-02-06T09:29:57.408+01:00  INFO 8904 --- [main] com.example.UddAPI.UddApiApplication     : No active profile set, falling back to 1 default profile: "default"
+2024-02-06T09:29:58.880+01:00  INFO 8904 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Elasticsearch repositories in DEFAULT mode.
+2024-02-06T09:29:59.058+01:00  INFO 8904 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 162 ms. Found 2 Elasticsearch repository interfaces.
+2024-02-06T09:29:59.625+01:00  INFO 8904 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Reactive Elasticsearch repositories in DEFAULT mode.
+2024-02-06T09:29:59.676+01:00  INFO 8904 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 49 ms. Found 0 Reactive Elasticsearch repository interfaces.
+2024-02-06T09:30:01.103+01:00  INFO 8904 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-02-06T09:30:01.133+01:00  INFO 8904 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-02-06T09:30:01.134+01:00  INFO 8904 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-02-06T09:30:01.294+01:00  INFO 8904 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-02-06T09:30:01.295+01:00  INFO 8904 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3754 ms
+2024-02-06T09:30:06.650+01:00  INFO 8904 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-02-06T09:30:06.668+01:00  INFO 8904 --- [main] com.example.UddAPI.UddApiApplication     : Started UddApiApplication in 10.393 seconds (process running for 12.098)
+2024-02-06T10:17:53.907+01:00  INFO 8904 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-02-06T10:17:53.916+01:00  INFO 8904 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-02-06T10:17:53.957+01:00  INFO 8904 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 40 ms
+2024-02-06T10:41:47.066+01:00  INFO 8568 --- [main] com.example.UddAPI.UddApiApplication     : Starting UddApiApplication using Java 19.0.1 with PID 8568 (C:\Users\PC\Desktop\fax\master\upp_sep_udd\udd\Udd-API\target\classes started by PC in C:\Users\PC\Desktop\fax\master\upp_sep_udd\udd\Udd-API)
+2024-02-06T10:41:47.074+01:00  INFO 8568 --- [main] com.example.UddAPI.UddApiApplication     : No active profile set, falling back to 1 default profile: "default"
+2024-02-06T10:41:50.032+01:00  INFO 8568 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Elasticsearch repositories in DEFAULT mode.
+2024-02-06T10:41:50.235+01:00  INFO 8568 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 184 ms. Found 2 Elasticsearch repository interfaces.
+2024-02-06T10:41:50.960+01:00  INFO 8568 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Reactive Elasticsearch repositories in DEFAULT mode.
+2024-02-06T10:41:51.008+01:00  INFO 8568 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 44 ms. Found 0 Reactive Elasticsearch repository interfaces.
+2024-02-06T10:41:53.543+01:00  INFO 8568 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-02-06T10:41:53.615+01:00  INFO 8568 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-02-06T10:41:53.615+01:00  INFO 8568 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-02-06T10:41:54.525+01:00  INFO 8568 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-02-06T10:41:54.525+01:00  INFO 8568 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 7230 ms
+2024-02-06T10:41:59.768+01:00  INFO 8568 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-02-06T10:41:59.800+01:00  INFO 8568 --- [main] com.example.UddAPI.UddApiApplication     : Started UddApiApplication in 15.375 seconds (process running for 21.084)
+2024-02-06T10:42:16.856+01:00  INFO 8568 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-02-06T10:42:16.864+01:00  INFO 8568 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-02-06T10:42:16.864+01:00  INFO 8568 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2024-02-06T10:43:00.974+01:00  INFO 1556 --- [main] com.example.UddAPI.UddApiApplication     : Starting UddApiApplication using Java 19.0.1 with PID 1556 (C:\Users\PC\Desktop\fax\master\upp_sep_udd\udd\Udd-API\target\classes started by PC in C:\Users\PC\Desktop\fax\master\upp_sep_udd\udd\Udd-API)
+2024-02-06T10:43:00.982+01:00  INFO 1556 --- [main] com.example.UddAPI.UddApiApplication     : No active profile set, falling back to 1 default profile: "default"
+2024-02-06T10:43:03.375+01:00  INFO 1556 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Elasticsearch repositories in DEFAULT mode.
+2024-02-06T10:43:03.733+01:00  INFO 1556 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 333 ms. Found 2 Elasticsearch repository interfaces.
+2024-02-06T10:43:04.428+01:00  INFO 1556 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Reactive Elasticsearch repositories in DEFAULT mode.
+2024-02-06T10:43:04.482+01:00  INFO 1556 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 54 ms. Found 0 Reactive Elasticsearch repository interfaces.
+2024-02-06T10:43:07.148+01:00  INFO 1556 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-02-06T10:43:07.265+01:00  INFO 1556 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-02-06T10:43:07.265+01:00  INFO 1556 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-02-06T10:43:07.828+01:00  INFO 1556 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-02-06T10:43:07.836+01:00  INFO 1556 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 6686 ms
+2024-02-06T10:43:13.060+01:00  INFO 1556 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-02-06T10:43:13.076+01:00  INFO 1556 --- [main] com.example.UddAPI.UddApiApplication     : Started UddApiApplication in 13.922 seconds (process running for 15.789)
+2024-02-06T10:43:23.176+01:00  INFO 1556 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-02-06T10:43:23.176+01:00  INFO 1556 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-02-06T10:43:23.176+01:00  INFO 1556 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms

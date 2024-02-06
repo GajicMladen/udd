@@ -1,5 +1,11 @@
 <div class="uplad-contract-div">
-  <button mat-raised-button color="accent" (click)="fileInput.click()">Choose contract</button>
+  <button mat-raised-button color="accent" (click)="fileInput.click()">
+    @if(!laws){
+      Choose contract
+    }@else {
+      Chosee law
+    }
+  </button>
   <input type="file" (change)="selectFile($event)" #fileInput hidden id="file"/>
   {{srcResult}}
   

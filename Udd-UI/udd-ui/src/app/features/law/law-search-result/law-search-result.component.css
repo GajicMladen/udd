@@ -1,0 +1,19 @@
+.search-result-total{
+    box-shadow: rgba(194, 24 ,91, 0.8) 1.95px 1.95px 2.6px;
+    border-radius: 10px;
+}
+.search-result{
+    
+    padding: 10px;
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+}
+.title{
+    min-width: 25%;
+}
+.highlight{
+    padding: 20px;
+    color: gray;
+    
+}
