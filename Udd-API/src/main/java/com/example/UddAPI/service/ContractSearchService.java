@@ -112,7 +112,7 @@ public class ContractSearchService {
 
         Query searchQuery = NativeQuery.builder()
                 .withQuery(query -> query.geoDistance(geoDistanceQuery ->
-                        geoDistanceQuery.field("location").distance(distance)
+                        geoDistanceQuery.field("location").distance(distance+"km")
                                 .location(geoLocation -> geoLocation.latlon(latLonGeoLocation ->
                                         latLonGeoLocation.lon(geoPoint.getLon()).lat(geoPoint.getLat()))))).build();
 

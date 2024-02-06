@@ -11,7 +11,7 @@ import org.springframework.data.elasticsearch.core.geo.GeoPoint;
 @NoArgsConstructor
 @AllArgsConstructor
 @Document(indexName = "index_ugovora")
-@Setting(settingPath = "/srpski-analizator-config.json")
+//@Setting(settingPath = "/srpski-analizator-config.json")
 public class ContractIndex {
     @Id
     private String id;
@@ -41,7 +41,8 @@ public class ContractIndex {
     private String emailAgency;
     @Field(type = FieldType.Text, store = true, name = "title")
     private String title;
-    @Field(type = FieldType.Text, store = true, name = "sadrzaj_sr",analyzer = "serbian_simple", searchAnalyzer = "serbian_simple")
+    @Field(type = FieldType.Text, store = true, name = "sadrzaj_sr")
+//            analyzer = "serbian_simple", searchAnalyzer = "serbian_simple")
     private String content;
 
     @GeoPointField

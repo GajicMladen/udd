@@ -5,6 +5,7 @@ import com.example.UddAPI.index.ContractIndex;
 import com.example.UddAPI.service.MinioAdapter;
 import com.example.UddAPI.service.ParsePDFService;
 import com.example.UddAPI.service.ContractSearchService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.http.MediaType;
@@ -17,6 +18,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/contracts")
+@Slf4j
 public class ContractController {
 
     @Autowired
@@ -43,6 +45,12 @@ public class ContractController {
         ugovorSearchService.createUgovorIndex(contractIndex);
 
         this.minioAdapter.uploadFile(file.getOriginalFilename(),file.getBytes());
+
+        log.info(String.format("STATISTIC-LOG | %s %s -> %s -> %s ;",
+                contractIndex.getNameSignAgency(),
+                contractIndex.getLastnameSignAgency(),
+                contractIndex.getGovName(),
+                contractIndex.getAddressGov()));
 
         return ResponseEntity.ok().body("");
     }

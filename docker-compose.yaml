@@ -29,7 +29,7 @@ services:
     volumes:
       - ./elk-config/logstash/logstash.conf:/usr/share/logstash/pipeline/logstash.conf
       - ./elk-config/logstash/logstash.yml:/usr/share/logstash/config/logstash.yml
-      - ls_data:/usr/share/logstash/data
+      - ./Udd-API/logstash-ingest-data/application.log:/usr/share/logstash/ingest_data/application.log
     depends_on:
       - elasticsearch
 

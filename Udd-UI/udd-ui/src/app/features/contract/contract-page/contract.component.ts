@@ -6,11 +6,12 @@ import { UploadFileComponent } from '../../../shared/components/upload-file/uplo
 import { API_ENDPOINTS } from '../../../../environments/API-paths';
 import { environments } from '../../../../environments/environments';
 import { ContractSearchComponent } from '../contract-search/contract-search.component';
+import { ReportsComponent } from '../../reports/reports.component';
 
 @Component({
   selector: 'app-contract',
   standalone: true,
-  imports: [MatButtonModule,UploadFileComponent,ContractSearchComponent],
+  imports: [MatButtonModule,UploadFileComponent,ContractSearchComponent,ReportsComponent],
   templateUrl: './contract.component.html',
   styleUrl: './contract.component.css'
 })

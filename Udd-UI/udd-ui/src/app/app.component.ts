@@ -4,6 +4,7 @@ import { RouterOutlet } from '@angular/router';
 import { MatProgressSpinnerModule} from '@angular/material/progress-spinner'
 import { LoaderService } from './shared/services/loader-service/loader.service';
 import { delay } from 'rxjs';
+import { NavbarComponent } from './shared/components/navbar/navbar.component';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,7 @@ import { delay } from 'rxjs';
   imports: [
     CommonModule,
     RouterOutlet,
-    MatProgressSpinnerModule],
+    MatProgressSpinnerModule,NavbarComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
